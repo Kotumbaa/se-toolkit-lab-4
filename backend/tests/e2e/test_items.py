@@ -1,13 +1,12 @@
-"""End-to-end tests for the GET /items endpoint."""
-
-import httpx
+"""End-to-end tests for the GET /interactions endpoint."""
 
 
-def test_get_items_returns_200(client: httpx.Client) -> None:
-    response = client.get("/items/")
+def test_get_interactions_returns_200(client):
+    response = client.get("/interactions/")
     assert response.status_code == 200
 
 
-def test_get_items_response_is_a_list(client: httpx.Client) -> None:
-    response = client.get("/items/")
+def test_get_interactions_response_is_a_list(client):
+    response = client.get("/interactions/")
+    assert response.status_code == 200
     assert isinstance(response.json(), list)
