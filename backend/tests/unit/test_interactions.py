@@ -25,8 +25,33 @@ def test_filter_returns_interaction_with_matching_ids() -> None:
     assert len(result) == 1
     assert result[0].id == 1
 
-def test_filter_excludes_interaction_with_different_learner_id() -> None:
-    interactions = [_make_log(1, learner_id=2, item_id=1)]
+def test_filter_returns_multiple_matching_items() -> None:
+    interactions = [
+        _make_log(1, learner_id=1, item_id=10),
+        _make_log(2, learner_id=1, item_id=20),
+        _make_log(3, learner_id=2, item_id=30),
+    ]
+
+    result = _filter_by_item_id(interactions, 1)
+
+    assert len(result) == 2
+    assert result[0].id == 1
+    assert result[1].id == 2
+
+
+def test_filter_returns_empty_when_no_match() -> None:
+    interactions = [
+        _make_log(1, learner_id=1, item_id=10),
+        _make_log(2, learner_id=2, item_id=20),
+    ]
+
+    result = _filter_by_item_id(interactions, 999)
+
+    assert result == []
+
+def test_filter_with_single_interaction() -> None:
+    interactions = [_make_log(1, learner_id=1, item_id=1)]
+
     result = _filter_by_item_id(interactions, 1)
 
     assert len(result) == 1
