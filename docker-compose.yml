@@ -7,6 +7,7 @@ services:
     expose:
       - ${APP_CONTAINER_PORT}
     environment:
+      - CORS_ORIGINS=${CORS_ORIGINS:-[]}
       - NAME=${APP_NAME:-'Learning Management Service'}
       - DEBUG=${APP_DEBUG:-false}
       - ADDRESS=${APP_CONTAINER_ADDRESS:?'APP_CONTAINER_ADDRESS is a required environment variable'}
