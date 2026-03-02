@@ -8,6 +8,7 @@ interface Item {
   id: number
   type: string
   title: string
+  description: string // ✅ добавили
   created_at: string
 }
 
@@ -94,6 +95,7 @@ function App() {
               <th>ID</th>
               <th>Type</th>
               <th>Title</th>
+              <th>Description</th> {/* ✅ добавили */}
               <th>Created at</th>
             </tr>
           </thead>
@@ -103,6 +105,7 @@ function App() {
                 <td>{item.id}</td>
                 <td>{item.type}</td>
                 <td>{item.title}</td>
+                <td>{item.description}</td> {/* ✅ добавили */}
                 <td>{item.created_at}</td>
               </tr>
             ))}
