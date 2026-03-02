@@ -49,6 +49,8 @@ tr:nth-child(even) {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  font-family: Papyrus, fantasy;
+  font-size: 28px;
 }
 
 .app-header h1 {
