@@ -2,6 +2,7 @@ import { useState, useEffect, FormEvent } from 'react'
 import './App.css'
 
 const STORAGE_KEY = 'api_token'
+const API_URL = import.meta.env.VITE_API_URL
 
 interface Item {
   id: number
@@ -25,7 +26,7 @@ function App() {
     setLoading(true)
     setError(null)
 
-    fetch('/items', {
+    fetch(`${API_URL}/items/`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {
