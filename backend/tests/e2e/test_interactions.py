@@ -1,1 +1,32 @@
 """End-to-end tests for the GET /interactions endpoint."""
+import httpx
+
+
+def test_get_interactions_returns_200(client: httpx.Client) -> None:
+    response = client.get("/interactions/")
+    assert response.status_code == 200
+
+
+def test_get_interactions_response_is_a_list(client: httpx.Client) -> None:
+    response = client.get("/interactions/")
+    assert isinstance(response.json(), list)
+
+def test_get_interactions_returns_200(client) -> None:
+    response = client.get("/interactions", headers={"Authorization": "Bearer helloprivet"})
+    assert response.status_code == 200
+
+
+def test_get_interactions_response_is_a_list(client) -> None:
+    response = client.get("/interactions", headers={"Authorization": "Bearer helloprivet"})
+    assert response.status_code == 200
+    assert isinstance(response.json(), list)
+
+def test_get_interactions_returns_200(client, auth_headers) -> None:
+    response = client.get("/interactions", headers=auth_headers)
+    assert response.status_code == 200
+
+
+def test_get_interactions_response_is_a_list(client, auth_headers) -> None:
+    response = client.get("/interactions", headers=auth_headers)
+    assert response.status_code == 200
+    assert isinstance(response.json(), list)
